@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Connexion {
+public class connexion {
 
     private static final String dbURI = "jdbc:mysql://localhost:3306/Construction?useSSL=false";
     private static final String dbUsername = "root";
     private static final String dbPassword = "0000";
 
-    public Connexion() {}
+    public connexion() {}
 
     public static Connection getConnection() {
         Connection con = null;
