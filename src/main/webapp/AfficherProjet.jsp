@@ -7,7 +7,7 @@
 <head>
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
@@ -33,6 +33,11 @@
         </div>
     </div>
 </nav>
+
+<a href="projet.jsp" class="btn btn-success ms-2 mt-3">
+    <i class="bi bi-plus-circle"></i> Ajouter Projet
+</a>
+
 <table class="table container mt-2">
     <thead>
     <tr>

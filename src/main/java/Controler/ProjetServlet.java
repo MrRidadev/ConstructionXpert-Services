@@ -57,7 +57,7 @@ public class ProjetServlet extends HttpServlet {
             System.out.println("erreur");
         }
 
-        resp.sendRedirect("AfficherProjet.jsp");
+        resp.sendRedirect("getProjet");
 
     }
 
@@ -68,6 +68,17 @@ public class ProjetServlet extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherProjet.jsp");
         req.setAttribute("projets", projets);
         dispatcher.forward(req, resp);
+
+
+    }
+
+    public void ModifierProjet(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+        String nom = req.getParameter("nom");
+        String description = req.getParameter("description");
+        String date_debut = req.getParameter("date_debut");
+        String date_fin = req.getParameter("date_fin");
+        Float budget = Float.parseFloat(req.getParameter("budget"));
 
 
     }

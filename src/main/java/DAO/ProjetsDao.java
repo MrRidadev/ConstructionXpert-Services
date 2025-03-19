@@ -13,6 +13,7 @@ public class ProjetsDao extends connexion {
 
     protected static final String INSERT_PROJETS = "insert into Projets(nom,description,date_bebut,date_fin,budget) values (?,?,?,?,?);";
     private static final String SELECT_ALL_PROJETS = "select * from projets;";
+    private static final String UPDATE_PROJET_SQL = "UPDATE projets SET nom = ?, description = ?, date_bebut = ?, date_fin = ?, budget = ? WHERE id = ?";
 
 
     public ProjetsDao() {}
@@ -61,6 +62,24 @@ public class ProjetsDao extends connexion {
             return projets;
 
 
+        }
+
+        public static void updateProjet(Projets projet) {
+        try (Connection con = getConnection();
+            PreparedStatement stm = con.prepareStatement(UPDATE_PROJET_SQL))
+        {
+            stm.setInt(1, projet.getId());
+            stm.setString(2, projet.getNom());
+            stm.setString(3, projet.getDescription());
+            stm.setString(4, projet.getDate_debut());
+            stm.setString(5, projet.getDate_fin());
+            stm.setFloat(6, projet.getBudget());
+            stm.executeUpdate();
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         }
 
 
