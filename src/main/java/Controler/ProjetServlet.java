@@ -2,6 +2,7 @@ package Controler;
 
 import DAO.ProjetsDao;
 import Model.Projets;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 import java.io.IOException;
-@WebServlet({"/projet","/addProjet"})
+import java.util.List;
+
+@WebServlet({"/projet","/addProjet","/getProjet"})
 public class ProjetServlet extends HttpServlet {
     ProjetsDao dao = null;
 
@@ -29,6 +32,9 @@ public class ProjetServlet extends HttpServlet {
         switch (action) {
             case "/addProjet":
                 addProjet(req, resp);
+                break;
+            case "/getProjet":
+                AfficherProjet(req, resp);
                 break;
 
         }
@@ -52,6 +58,17 @@ public class ProjetServlet extends HttpServlet {
         }
 
         resp.sendRedirect("AfficherProjet.jsp");
+
+    }
+
+    public void AfficherProjet(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+
+        List<Projets> projets = ProjetsDao.getAllProjets();
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherProjet.jsp");
+        req.setAttribute("projets", projets);
+        dispatcher.forward(req, resp);
+
 
     }
 

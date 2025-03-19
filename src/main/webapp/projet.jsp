@@ -19,7 +19,7 @@
                     <a class="nav-link active" aria-current="page" href="gestion.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="AfficherProjet.jsp">Projet</a>
+                    <a class="nav-link" href="getProjet">Projet</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ressource.jsp">Ressource</a>

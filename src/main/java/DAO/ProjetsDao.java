@@ -33,7 +33,7 @@ public class ProjetsDao extends connexion {
         }
         return false;
     }
-        public List<Projets> getAllProjets() {
+        public static List<Projets> getAllProjets() {
             List<Projets> projets = new ArrayList<>();
 
             try (Connection connection = getConnection();
@@ -43,7 +43,7 @@ public class ProjetsDao extends connexion {
                 ResultSet rs = preparedStatement.executeQuery();
 
                 while (rs.next()) {
-                    int id = rs.getInt("id");
+                    int id = rs.getInt("id_projet");
                     String nom = rs.getString("nom");
                     String description = rs.getString("description");
                     String date_debut = rs.getString("date_bebut");

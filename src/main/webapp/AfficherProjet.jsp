@@ -1,5 +1,8 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  pageEncoding="utf-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE HTML>
+
 <html>
 <head>
     <title>Title</title>
@@ -19,7 +22,7 @@
                     <a class="nav-link active" aria-current="page" href="gestion.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ressource.jsp">Projet</a>
+                    <a class="nav-link" href="getProjet">Projet</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ressource.jsp">Ressource</a>
@@ -43,13 +46,14 @@
     </tr>
     </thead>
     <tbody>
+<c:forEach var="projet" items="${projets}">
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
+        <th scope="row">${projet.id}</th>
+        <td>${projet.nom}</td>
+        <td>${projet.description}</td>
+        <td>${projet.date_debut}</td>
+        <td>${projet.date_fin}</td>
+        <td>${projet.budget}</td>
 
         <td>
             <button class="btn btn-warning">modifier</button>
@@ -57,7 +61,7 @@
             <button class="btn btn-info">Ajouter tache</button>
         </td>
     </tr>
-
+</c:forEach>
     </tbody>
 </table>
 </body>
