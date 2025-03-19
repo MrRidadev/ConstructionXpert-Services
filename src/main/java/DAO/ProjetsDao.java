@@ -14,7 +14,7 @@ public class ProjetsDao extends connexion {
     protected static final String INSERT_PROJETS = "insert into Projets(nom,description,date_bebut,date_fin,budget) values (?,?,?,?,?);";
     private static final String SELECT_ALL_PROJETS = "select * from projets;";
     private static final String UPDATE_PROJET_SQL = "UPDATE projets SET nom = ?, description = ?, date_bebut = ?, date_fin = ?, budget = ? WHERE id = ?";
-
+    private static final String SELECT_PROJET_BY_ID = "SELECT * FROM projets WHERE id = ?";
 
     public ProjetsDao() {}
 
@@ -63,6 +63,30 @@ public class ProjetsDao extends connexion {
 
 
         }
+    public Projets getProjetById(int id) {
+        Projets projet = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PROJET_BY_ID)) {
+
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                String nom = rs.getString("nom");
+                String description = rs.getString("description");
+                String date_debut = rs.getString("date_debut");
+                String date_fin = rs.getString("date_fin");
+                float budget = rs.getFloat("budget");
+
+                projet = new Projets(id, nom, description, date_debut, date_fin, budget);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return projet;
+    }
 
         public static void updateProjet(Projets projet) {
         try (Connection con = getConnection();
