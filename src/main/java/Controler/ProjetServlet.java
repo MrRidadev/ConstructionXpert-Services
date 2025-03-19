@@ -45,7 +45,11 @@ public class ProjetServlet extends HttpServlet {
         Float budget = Float.parseFloat(req.getParameter("budget"));
 
         Projets projets = new Projets(nom, description, date_debut, date_fin, budget);
-        ProjetsDao.ajouterProjet(projets);
+        if (        ProjetsDao.ajouterProjet(projets)){
+            System.out.println("Ajout de projet avec succes!");
+        }else {
+            System.out.println("erreur");
+        }
 
         resp.sendRedirect("AfficherProjet.jsp");
 
