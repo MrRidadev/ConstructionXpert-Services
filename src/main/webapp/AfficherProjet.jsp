@@ -61,9 +61,19 @@
         <td>${projet.budget}</td>
 
         <td>
-            <button class="btn btn-warning">modifier</button>
-            <button class="btn btn-danger">supprimer</button>
-            <button class="btn btn-info">Ajouter tache</button>
+            <a href="upadateProjetView?id=${projet.id}" class="btn btn-warning btn-sm">
+                <input name="action" value="updateProjet" type="hidden">
+                <i class="bi bi-pencil-square"></i> Modifier
+            </a>
+
+            <a href="" class="btn btn-danger btn-sm" >
+                <i class="bi bi-trash"></i> Supprimer
+            </a>
+
+            <a href="" class="btn btn-info btn-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter une tâche
+            </a>
+
         </td>
     </tr>
 </c:forEach>

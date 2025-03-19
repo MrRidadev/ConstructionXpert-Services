@@ -13,8 +13,8 @@ public class ProjetsDao extends connexion {
 
     protected static final String INSERT_PROJETS = "insert into Projets(nom,description,date_bebut,date_fin,budget) values (?,?,?,?,?);";
     private static final String SELECT_ALL_PROJETS = "select * from projets;";
-    private static final String UPDATE_PROJET_SQL = "UPDATE projets SET nom = ?, description = ?, date_bebut = ?, date_fin = ?, budget = ? WHERE id = ?";
-    private static final String SELECT_PROJET_BY_ID = "SELECT * FROM projets WHERE id = ?";
+    private  static final String UPDATE_PROJET_SQL = "UPDATE projets SET nom = ?, description = ?, date_bebut = ?, date_fin = ?, budget = ? WHERE id_projet = ?;";
+    private static final String SELECT_PROJET_BY_ID = "SELECT * FROM projets WHERE id_projet = ?";
 
     public ProjetsDao() {}
 
@@ -63,7 +63,7 @@ public class ProjetsDao extends connexion {
 
 
         }
-    public Projets getProjetById(int id) {
+    public static Projets getProjetById(int id) {
         Projets projet = null;
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PROJET_BY_ID)) {
@@ -74,7 +74,7 @@ public class ProjetsDao extends connexion {
             if (rs.next()) {
                 String nom = rs.getString("nom");
                 String description = rs.getString("description");
-                String date_debut = rs.getString("date_debut");
+                String date_debut = rs.getString("date_bebut");
                 String date_fin = rs.getString("date_fin");
                 float budget = rs.getFloat("budget");
 
@@ -92,7 +92,8 @@ public class ProjetsDao extends connexion {
         try (Connection con = getConnection();
             PreparedStatement stm = con.prepareStatement(UPDATE_PROJET_SQL))
         {
-            stm.setInt(1, projet.getId());
+            Projets projets = getProjetById(projet.getId());
+            stm.setInt(1, projets.getId());
             stm.setString(2, projet.getNom());
             stm.setString(3, projet.getDescription());
             stm.setString(4, projet.getDate_debut());
