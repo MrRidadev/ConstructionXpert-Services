@@ -5,9 +5,10 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>AfficherProjet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
@@ -70,9 +71,13 @@
                 <i class="bi bi-trash"></i> Supprimer
             </a>
 
-            <a href="" class="btn btn-info btn-sm">
-                <i class="bi bi-plus-circle"></i> Ajouter une tâche
-            </a>
+            <form action="AfficherTache.jsp" method="get" class="d-inline">
+                <input type="hidden"  name="id" value="${projet.id}">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-eye"></i> Voir une tâche
+                </button>
+            </form>
+
 
         </td>
     </tr>

@@ -7,6 +7,7 @@ public class Taches {
     private String date_debut;
     private String date_fin;
     private String ressource;
+    private int id_projet;
 
     public Taches() {}
 
@@ -19,12 +20,29 @@ public class Taches {
         this.ressource = ressource;
     }
 
+    public Taches(String nom_tache, String description, String date_debut, String date_fin, String ressource, int id_projet) {
+        this.nom_tache = nom_tache;
+        this.description = description;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.ressource = ressource;
+        this.id_projet = id_projet;
+    }
+
     public Taches(String nom_tache, String description, String date_debut, String date_fin, String ressource) {
         this.nom_tache = nom_tache;
         this.description = description;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
         this.ressource = ressource;
+    }
+
+    public int getId_projet() {
+        return id_projet;
+    }
+
+    public void setId_projet(int id_projet) {
+        this.id_projet = id_projet;
     }
 
     public int getId() {

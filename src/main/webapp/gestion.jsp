@@ -37,7 +37,10 @@
         </div>
     </div>
 </nav>
-<main class="d-flex justify-content-between container mt-5">
+
+
+
+<main class="d-flex justify-content-between container mt-5 h-75 ">
     <div >
         <h1>"Votre vision, notre mission : batir lavenir avec excellence."</h1>
         <a class="btn btn-warning mt-2" href="projet.jsp"> Ajouter Projet</a>
@@ -47,6 +50,19 @@
         <dotlottie-player src="https://lottie.host/6473db68-53d3-452c-b708-1abd5ba49e76/16ik9gj9GV.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
     </div>
 </main>
+<!-- Footer -->
+<footer class="bg-light text-dark text-center py-3 mt-5">
+    <div class="container">
+        <!-- Logo -->
+        <div class="mb-2">
+            <img src="/ConstructionXpert/resource/Image/freepik__upload__81093-removebg-preview.png"  alt="Logo" style="width: 50px; height: 50px;">
+        </div>
+
+        <!-- Copyright et texte -->
+        <p class="mb-0">&copy; 2025 ConstructionXpert - Tous droits reserves.</p>
+    </div>
+</footer>
+
 
 </body>
 </html>
