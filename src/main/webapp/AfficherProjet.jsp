@@ -66,7 +66,7 @@
                 <i class="bi bi-pencil-square"></i> Modifier
             </a>
 
-            <a href="" class="btn btn-danger btn-sm" >
+            <a href="deleteProjet?id=${projet.id}" class="btn btn-danger btn-sm" >
                 <i class="bi bi-trash"></i> Supprimer
             </a>
 

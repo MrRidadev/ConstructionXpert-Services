@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/projet","/addProjet","/getProjet","/updateProjet","/upadateProjetView"})
+@WebServlet({"/projet","/addProjet","/getProjet","/updateProjet","/upadateProjetView","/deleteProjet"})
 public class ProjetServlet extends HttpServlet {
     ProjetsDao dao = null;
 
@@ -41,6 +41,9 @@ public class ProjetServlet extends HttpServlet {
                 break;
                 case "/upadateProjetView":
                     UpdateProjet(req, resp);
+                    break;
+                case "/deleteProjet":
+                    deleteProjet(req, resp);
                     break;
 
 
@@ -101,6 +104,16 @@ public class ProjetServlet extends HttpServlet {
         req.setAttribute("projets", projets);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/updateProjet.jsp");
         dispatcher.forward(req, resp);
+    }
+
+    public void deleteProjet(HttpServletRequest req, HttpServletResponse resp)
+    throws ServletException, IOException {
+
+        int id = Integer.parseInt(req.getParameter("id"));
+        ProjetsDao.deleteProjetById(id);
+
+        resp.sendRedirect("getProjet");
+
     }
 
 

@@ -11,10 +11,11 @@ import java.util.List;
 
 public class ProjetsDao extends connexion {
 
-    protected static final String INSERT_PROJETS = "insert into Projets(nom,description,date_bebut,date_fin,budget) values (?,?,?,?,?);";
+    private static final String INSERT_PROJETS = "insert into Projets(nom,description,date_bebut,date_fin,budget) values (?,?,?,?,?);";
     private static final String SELECT_ALL_PROJETS = "select * from projets;";
     private  static final String UPDATE_PROJET_SQL = "UPDATE projets SET nom = ?, description = ?, date_bebut = ?, date_fin = ?, budget = ? WHERE id_projet = ?;";
     private static final String SELECT_PROJET_BY_ID = "SELECT * FROM projets WHERE id_projet = ?";
+    private static final String DELETE_PROJET_BY_ID = "DELETE FROM projets WHERE id_projet = ?";
 
     public ProjetsDao() {}
 
@@ -105,6 +106,20 @@ public class ProjetsDao extends connexion {
         catch (Exception e) {
             e.printStackTrace();
         }
+        }
+
+        public static void deleteProjetById(int id) {
+            try (Connection con = getConnection();
+                 PreparedStatement stm = con.prepareStatement(DELETE_PROJET_BY_ID)
+            )
+            {
+                stm.setInt(1, id);
+
+                stm.executeUpdate();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
