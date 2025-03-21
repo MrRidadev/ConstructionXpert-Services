@@ -82,7 +82,7 @@
                 <i class="bi bi-trash"></i> Supprimer
             </a>
 
-            <form action="AfficherTache.jsp" method="get" class="d-inline">
+            <form action="listTaches?id=${projet.id}" method="get" class="d-inline">
                 <input type="hidden"  name="id" value="${projet.id}">
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="bi bi-eye"></i> Voir une tâche

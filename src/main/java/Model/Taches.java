@@ -37,6 +37,17 @@ public class Taches {
         this.ressource = ressource;
     }
 
+    public Taches(int idTache, String nomTache, String description, String dateDebut, String dateFin, String ressource, int idProjet) {
+        this.id = idTache;
+        this.nom_tache = nomTache;
+        this.description = description;
+        this.date_debut = dateDebut;
+        this.date_fin = dateFin;
+        this.ressource = ressource;
+        this.id_projet = idProjet;
+
+    }
+
     public int getId_projet() {
         return id_projet;
     }

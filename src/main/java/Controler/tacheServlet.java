@@ -12,8 +12,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet({"/tache","/ajouterTache"})
+@WebServlet({"/tache","/ajouterTache","/listTaches"})
 public class tacheServlet extends HttpServlet {
 
     TachesDAO dao = null;
@@ -25,37 +26,28 @@ public class tacheServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+          }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
 
         switch (action) {
             case "/ajouterTache":
                 ajouterTache(req, resp);
                 break;
-        }    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id =Integer.parseInt(req.getParameter("id"));
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(req.getContextPath()+"/AfficherTache.jsp");
-        req.setAttribute("id",id);
-        dispatcher.forward(req, resp);
-
+            case "/listTaches":
+                afficherTache(req, resp);
+                break;
+        }
 
 
     }
 
     public void ajouterTache(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String idStr = req.getParameter("id_projet");
-
-        if (idStr == null || idStr.isEmpty()) {
-            System.out.println("ID est null ou vide dans ajouterTache !");
-
-            return;
-        }
-
-        int id = Integer.parseInt(idStr);
-
+        int id = Integer.parseInt(req.getParameter("id"));
 
 
         String nom_tache = req.getParameter("nom_tache");
@@ -73,6 +65,18 @@ public class tacheServlet extends HttpServlet {
 
         resp.sendRedirect("AfficherTache.jsp");
 
+
+    }
+
+    public void afficherTache(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+
+        List<Taches> taches = TachesDAO.getAllTaches(id);
+        req.setAttribute("taches", taches);
+        req.setAttribute("projet_id", id);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherTache.jsp");
+        dispatcher.forward(req, resp);
 
     }
 }

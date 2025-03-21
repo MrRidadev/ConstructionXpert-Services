@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>AfficherTaches</title>
@@ -44,25 +45,32 @@
     </div>
 </nav>
 <a href="ajouterTache.jsp" class="btn btn-success rounded-circle shadow position-fixed" style="bottom: 20px; right: 20px; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+    <input type="hidden" name="id" value="${projet_id}">
     <i class="bi bi-plus-lg fs-4"></i>
 </a>
-
+<script>
+    alert(${projet_id})
+</script>
 
 <div class="container py-4">
     <div class="row">
         <!-- Répéter cette div pour chaque tâche -->
+        <c:forEach var="taches" items="${taches}">
         <div class="col-12 mb-4">
+
             <div class="card shadow-sm flex-row">
                 <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center w-100">
-                    <div>
-                        <h5 class="card-title fw-bold">Nom de la Tâche</h5>
-                        <p class="card-text text-muted small mb-1">Description brève de la tâche.</p>
+
+
+            <div>
+                        <h5 class="card-title fw-bold">${taches.nom_tache}</h5>
+                        <p class="card-text text-muted small mb-1">${taches.description}</p>
                         <ul class="list-unstyled mb-1 small">
-                            <li><i class="bi bi-calendar-event me-2"></i><strong>Début :</strong> 2024-03-20</li>
-                            <li><i class="bi bi-calendar-check me-2"></i><strong>Fin :</strong> 2024-03-25</li>
+                            <li><i class="bi bi-calendar-event me-2"></i><strong>Début :</strong>${taches.date_debut}</li>
+                            <li><i class="bi bi-calendar-check me-2"></i><strong>Fin :</strong>${taches.date_fin}</li>
                         </ul>
                         <p class="small mb-0">
-                            <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong> Ahmed El Idrissi
+                            <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong>${taches.ressource}
                         </p>
                     </div>
 
@@ -76,7 +84,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        </c:forEach>
         <!-- Fin de la tâche -->
     </div>
 </div>
