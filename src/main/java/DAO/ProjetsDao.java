@@ -94,12 +94,13 @@ public class ProjetsDao extends connexion {
             PreparedStatement stm = con.prepareStatement(UPDATE_PROJET_SQL))
         {
             Projets projets = getProjetById(projet.getId());
-            stm.setInt(1, projets.getId());
-            stm.setString(2, projet.getNom());
-            stm.setString(3, projet.getDescription());
-            stm.setString(4, projet.getDate_debut());
-            stm.setString(5, projet.getDate_fin());
-            stm.setFloat(6, projet.getBudget());
+
+            stm.setString(1, projet.getNom());
+            stm.setString(2, projet.getDescription());
+            stm.setString(3, projet.getDate_debut());
+            stm.setString(4, projet.getDate_fin());
+            stm.setFloat(5, projet.getBudget());
+            stm.setInt(6, projets.getId());
             stm.executeUpdate();
             return true;
 

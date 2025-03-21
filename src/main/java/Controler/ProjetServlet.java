@@ -105,7 +105,7 @@ public class ProjetServlet extends HttpServlet {
     }
     public void UpdateProjet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id_"));
+        int id = Integer.parseInt(req.getParameter("id"));
 
         Projets projets = ProjetsDao.getProjetById(id);
         req.setAttribute("projets", projets);

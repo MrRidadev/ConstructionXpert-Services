@@ -43,7 +43,7 @@
 <%--    <button type="submit" class="btn btn-primary">--%>
 <%--        <i class="bi bi-save"></i> Enregistrer--%>
 <%--    </button>--%>
-    <a href="upadateProjetView" class="btn btn-secondary">Enregistrer</a>
+    <button type="submit" class="btn btn-secondary">Enregistrer</button>
     <a href="getProjet" class="btn btn-secondary">Annuler</a>
 </form>
 
