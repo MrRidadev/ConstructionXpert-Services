@@ -89,7 +89,7 @@ public class ProjetsDao extends connexion {
         return projet;
     }
 
-        public static void updateProjet(Projets projet) {
+        public static boolean updateProjet(Projets projet) {
         try (Connection con = getConnection();
             PreparedStatement stm = con.prepareStatement(UPDATE_PROJET_SQL))
         {
@@ -101,11 +101,17 @@ public class ProjetsDao extends connexion {
             stm.setString(5, projet.getDate_fin());
             stm.setFloat(6, projet.getBudget());
             stm.executeUpdate();
+            return true;
+
+
+
+
 
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
         }
 
         public static void deleteProjetById(int id) {

@@ -61,7 +61,13 @@ public class ProjetServlet extends HttpServlet {
         Float budget = Float.parseFloat(req.getParameter("budget"));
 
         Projets projets = new Projets(id,nom, description, date_debut, date_fin, budget);
-        ProjetsDao.updateProjet(projets);
+        System.out.println(projets);
+        if (ProjetsDao.updateProjet(projets)){
+            System.out.println("updateProjet avec succes");
+        }else {
+            System.out.println("error");
+        }
+
         resp.sendRedirect("getProjet");
 
 
@@ -81,8 +87,9 @@ public class ProjetServlet extends HttpServlet {
         }else {
             System.out.println("erreur");
         }
+        RequestDispatcher rd = req.getRequestDispatcher("getProjet");
+        rd.forward(req, resp);
 
-        resp.sendRedirect("getProjet");
 
     }
 
@@ -98,7 +105,7 @@ public class ProjetServlet extends HttpServlet {
     }
     public void UpdateProjet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+        int id = Integer.parseInt(req.getParameter("id_"));
 
         Projets projets = ProjetsDao.getProjetById(id);
         req.setAttribute("projets", projets);
