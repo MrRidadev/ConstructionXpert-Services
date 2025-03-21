@@ -40,12 +40,17 @@
         <input type="number" class="form-control" name="budget" id="budget" value="${projets.budget}" step="0.01" required>
     </div>
 
-<%--    <button type="submit" class="btn btn-primary">--%>
-<%--        <i class="bi bi-save"></i> Enregistrer--%>
-<%--    </button>--%>
-    <button type="submit" class="btn btn-secondary">Enregistrer</button>
-    <a href="getProjet" class="btn btn-secondary">Annuler</a>
+
+    <button type="submit" class="btn btn-primary text-white">
+        <i class="bi bi-save me-2"></i> Enregistrer
+    </button>
+    <a href="getProjet" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i> Annuler
+    </a>
 </form>
+
+
+
 
 </body>
 </html>

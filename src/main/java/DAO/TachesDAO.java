@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Model.Projets;
 import Model.Taches;
 
 import java.sql.Connection;
@@ -17,6 +18,7 @@ public class TachesDAO extends connexion{
             PreparedStatement ps = con.prepareStatement(INSERT_TACHES)
         )
         {
+//            ProjetsDao.getProjetById(taches.getId_projet());
 
             ps.setString(1, taches.getNom_tache());
             ps.setString(2, taches.getDescription());

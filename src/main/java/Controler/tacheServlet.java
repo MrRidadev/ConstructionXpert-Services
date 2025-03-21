@@ -46,7 +46,7 @@ public class tacheServlet extends HttpServlet {
 
     public void ajouterTache(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String idStr = req.getParameter("id");
+        String idStr = req.getParameter("id_projet");
 
         if (idStr == null || idStr.isEmpty()) {
             System.out.println("ID est null ou vide dans ajouterTache !");
