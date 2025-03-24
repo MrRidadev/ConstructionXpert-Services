@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/tache","/ajouterTache","/listTaches"})
+@WebServlet({"/tache","/ajouterTache","/listTaches","/AddrTache"})
 public class tacheServlet extends HttpServlet {
 
     TachesDAO dao = null;
@@ -40,9 +40,18 @@ public class tacheServlet extends HttpServlet {
             case "/listTaches":
                 afficherTache(req, resp);
                 break;
+                case "/AddrTache":
+                    AddrTache(req, resp);
+                    break;
         }
 
 
+    }
+    public void AddrTache(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        req.setAttribute("id", id);
+        RequestDispatcher rd = req.getRequestDispatcher("/ajouterTache.jsp");
+        rd.forward(req, resp);
     }
 
     public void ajouterTache(HttpServletRequest req, HttpServletResponse resp)
@@ -62,8 +71,9 @@ public class tacheServlet extends HttpServlet {
         }else {
             System.out.println("erreur");
         }
-
-        resp.sendRedirect("AfficherTache.jsp");
+        req.setAttribute("id", id);
+        RequestDispatcher rd = req.getRequestDispatcher("/listTaches");
+        rd.forward(req, resp);
 
 
     }
@@ -73,10 +83,18 @@ public class tacheServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
         List<Taches> taches = TachesDAO.getAllTaches(id);
-        req.setAttribute("taches", taches);
-        req.setAttribute("projet_id", id);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherTache.jsp");
-        dispatcher.forward(req, resp);
+
+        if (taches.size()==0) {
+            req.setAttribute("err","Aucun tache");
+            req.setAttribute("id", id);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/ajouterTache.jsp");
+            dispatcher.forward(req, resp);
+
+        }else {
+            req.setAttribute("taches", taches);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherTache.jsp");
+            dispatcher.forward(req, resp);
+        }
 
     }
 }

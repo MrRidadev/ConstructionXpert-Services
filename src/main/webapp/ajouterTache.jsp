@@ -10,6 +10,11 @@
 </head>
 <body>
 <% System.out.println(request.getParameter("id"));%>
+<% if(request.getAttribute("err")!=null){%>
+<div class="alert alert-danger" role="alert">
+ <%=request.getAttribute("err")%>
+</div>
+<%}%>
 <div class="container mt-5">
     <h2 class="mb-4">Ajouter une tâche au projet ${id}</h2>
 
@@ -47,6 +52,7 @@
 
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>

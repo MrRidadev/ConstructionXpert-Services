@@ -44,13 +44,14 @@
         </div>
     </div>
 </nav>
-<a href="ajouterTache.jsp" class="btn btn-success rounded-circle shadow position-fixed" style="bottom: 20px; right: 20px; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-    <input type="hidden" name="id" value="${projet_id}">
-    <i class="bi bi-plus-lg fs-4"></i>
-</a>
-<script>
-    alert(${projet_id})
-</script>
+<c:forEach var="tache" items="${taches}">
+
+    <a href="AddrTache?id=${tache.id_projet}" class="btn btn-success rounded-circle shadow position-fixed" style="bottom: 20px; right: 20px; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+        <input type="hidden" name="id" value="${tache.id_projet}">
+        <i class="bi bi-plus-lg fs-4"></i>
+    </a>
+</c:forEach>
+
 
 <div class="container py-4">
     <div class="row">
@@ -72,6 +73,9 @@
                         <p class="small mb-0">
                             <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong>${taches.ressource}
                         </p>
+                <p class="small mb-0">
+                    <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong>${taches.id_projet}
+                </p>
                     </div>
 
                     <div class="mt-3 mt-md-0 d-flex">
@@ -90,12 +94,7 @@
         <!-- Fin de la tâche -->
     </div>
 </div>
-
-
-
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>
