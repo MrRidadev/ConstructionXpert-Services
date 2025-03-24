@@ -73,9 +73,7 @@
                         <p class="small mb-0">
                             <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong>${taches.ressource}
                         </p>
-                <p class="small mb-0">
-                    <i class="bi bi-person-fill me-2"></i><strong>Ressource :</strong>${taches.id_projet}
-                </p>
+
                     </div>
 
                     <div class="mt-3 mt-md-0 d-flex">

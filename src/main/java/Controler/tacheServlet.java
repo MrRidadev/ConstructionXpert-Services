@@ -43,6 +43,9 @@ public class tacheServlet extends HttpServlet {
                 case "/AddrTache":
                     AddrTache(req, resp);
                     break;
+
+                    default:
+                        System.out.println("erreur");
         }
 
 
@@ -85,7 +88,7 @@ public class tacheServlet extends HttpServlet {
         List<Taches> taches = TachesDAO.getAllTaches(id);
 
         if (taches.size()==0) {
-            req.setAttribute("err","Aucun tache");
+            req.setAttribute("err","Aucune tâche, ajoutez d'abord.");
             req.setAttribute("id", id);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/ajouterTache.jsp");
             dispatcher.forward(req, resp);

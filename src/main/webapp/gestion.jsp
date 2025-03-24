@@ -45,16 +45,20 @@
 <%--fin Navbar--%>
 
 
-<main class="d-flex justify-content-between container mt-5 h-75 ">
-    <div >
-        <h1>"Votre vision, notre mission : batir lavenir avec excellence."</h1>
-        <a class="btn btn-warning mt-2" href="projet.jsp"> Ajouter Projet</a>
+<main class="d-flex flex-column flex-md-row justify-content-between container mt-5 h-75">
+    <div class="text-center text-md-start">
+        <h1>
+            "Construire l'avenir, pierre par pierre, avec passion et expertise."</h1>
+        <a class="btn btn-warning mt-2" href="projet.jsp">Ajouter Projet</a>
     </div>
-    <div>
+    <div class="text-center mt-4 mt-md-0">
         <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-        <dotlottie-player src="https://lottie.host/6473db68-53d3-452c-b708-1abd5ba49e76/16ik9gj9GV.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+        <dotlottie-player src="https://lottie.host/6473db68-53d3-452c-b708-1abd5ba49e76/16ik9gj9GV.lottie" background="transparent" speed="1" style="width: 100%; max-width: 300px; height: auto;" loop autoplay></dotlottie-player>
     </div>
 </main>
+
+
+
 <!-- Footer -->
 <footer class="bg-light text-dark text-center py-3 mt-5">
     <div class="container">
