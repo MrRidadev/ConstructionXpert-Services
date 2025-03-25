@@ -44,11 +44,11 @@ L'application **ConstructionXpert Services** est une solution web permettant à 
 
 Les diagrammes UML fournis dans ce projet comprennent :
 - **Diagramme de Classes**
-- ![Class uml diagram](./Uml/Capture%20d’écran%202025-03-17%20105905.png)
+![Class uml diagram](./Uml/daigrammClass.png)
 - **Diagramme de Cas d'Utilisation**
-- - ![Use case uml diagram](./Uml/Capture%20d’écran%202025-03-17%20105944.png)
+![Use case uml diagram](./Uml/Capture%20d’écran%202025-03-17%20105944.png)
 - **Diagramme de Séquence**
-- ![Sequende uml diagram](./Uml/Capture%20d’écran%202025-03-17%20105742.png)
+![Sequende uml diagram](./Uml/Capture%20d’écran%202025-03-17%20105742.png)
 ## Planification du Projet
 
 La planification a été réalisée à l'aide de [Trello](https://trello.com/invite/b/67d80da6dcf4b278d9c8fc07/ATTIa556d07c5275e2ee118384adacf1f2753330CE2B/constructionxpert-services) pour suivre les tâches et les délais.
