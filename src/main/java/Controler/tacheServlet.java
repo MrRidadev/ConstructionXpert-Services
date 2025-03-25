@@ -14,7 +14,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/tache","/ajouterTache","/listTaches","/AddrTache"})
+@WebServlet({
+        "/tache",
+        "/ajouterTache",
+        "/listTaches",
+        "/AddrTache",
+        "/editTache",
+        "/updateTache",
+        "/deleteTache"
+})
 public class tacheServlet extends HttpServlet {
 
     TachesDAO dao = null;
@@ -40,8 +48,16 @@ public class tacheServlet extends HttpServlet {
             case "/listTaches":
                 afficherTache(req, resp);
                 break;
-                case "/AddrTache":
-                    AddrTache(req, resp);
+            case "/AddrTache":
+                  AddrTache(req, resp);
+                  break;
+            case "/editTache":
+                editTach(req, resp);
+            case "/updateTache":
+                updateTache(req, resp);
+                break;
+            case "/deleteTache":
+                    deleteTache(req, resp);
                     break;
 
                     default:
@@ -98,6 +114,51 @@ public class tacheServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/AfficherTache.jsp");
             dispatcher.forward(req, resp);
         }
+
+    }
+
+    public void editTach (HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException
+    {
+        // get tach by id
+        int id = Integer.parseInt(req.getParameter("id"));
+        Taches tach = TachesDAO.getTachById(id);
+        System.out.println(tach.getNom_tache());
+        // dispatch jsp
+        RequestDispatcher rd = req.getRequestDispatcher("/editTache.jsp");
+        rd.forward(req, resp);
+
+
+    }
+
+    public void updateTache(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+
+        int id = Integer.parseInt(req.getParameter("id"));
+        String nom_tache = req.getParameter("nom_tache");
+        String description_tache = req.getParameter("description");
+        String date_debut_tache = req.getParameter("dateDebut");
+        String date_fin_tache = req.getParameter("dateFin");
+        String ressource_tache = req.getParameter("ressource");
+
+        Taches taches = new Taches(nom_tache,description_tache,date_debut_tache,date_fin_tache,ressource_tache,id);
+
+        if (TachesDAO.getTachById(id)!=null) {
+            System.out.println("modifer de tache avec succes!");
+        }else {
+            System.out.println("erreur");
+        }
+        req.setAttribute("id", id);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/listTaches");
+        dispatcher.forward(req, resp);
+    }
+
+    public static void deleteTache(HttpServletRequest req, HttpServletResponse resp)
+    throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        TachesDAO.deleteTaches(id);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/listTaches");
+        dispatcher.forward(req, resp);
 
     }
 }

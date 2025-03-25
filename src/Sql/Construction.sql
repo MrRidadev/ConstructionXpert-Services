@@ -37,3 +37,6 @@ create table Ressources (
                             fornisour varchar(255)
 );
 
+
+select * from taches
+where id = ?;
